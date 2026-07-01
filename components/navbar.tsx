@@ -1,37 +1,24 @@
+"use client"
+
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-    return (
-        <header className="bg-white p-6">
-            <div className="container mx-auto flex items-center justify-between">
-                {/* Logo & Name on the Left */}
-                <div className="flex items-center space-x-3">
-                    <Image
-                        src="/BadanKesatuanBangsaDanPolitikKotaBandung.png"
-                        alt="Logo Kesbangpol"
-                        width={100}
-                        height={100}
-                        className="object-contain"
-                    />
-                    <div className="text-left">
-                        <h1 className="text-2xl font-bold text-gray-800">KESATUAN BANGSA DAN POLITIK</h1>
-                        <h2 className="text-lg font-bold text-gray-700">KOTA BANDUNG</h2>
-                    </div>
-                </div>
+    const pathname = usePathname()
+    const navLinks = [
+        { href: "/", label: "Home" },
+        { href: "/profil", label: "Profil" },
+        { href: "/pelayanan", label: "Pelayanan" },
+        { href: "/sakip", label: "SAKIP" },
+        { href: "/artikel", label: "Artikel" },
+    ]
 
-                {/* Navigation Links on the Right */}
-                <nav className="flex space-x-8 text-gray-600">
-                    {['Beranda', 'Profil', 'Layanan', 'Publikasi', 'PPID', 'Kontak'].map((item) => (
-                        <a
-                            key={item}
-                            href="#"
-                            className="text-sm hover:text-[#2563EB] transition-colors"
-                        >
-                            {item}
-                        </a>
-                    ))}
-                </nav>
+    return (
+        <header>
+            <div className="flex items-center gap-2">
+                <Image src="/logo.png" alt="Logo" width={32} height={32} />
+                <span className="text-lg font-bold">My App</span>
             </div>
         </header>
-    );
+    )
 }
